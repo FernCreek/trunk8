@@ -1,4 +1,4 @@
-/**!
+/*!
  * trunk8 v1.3.3
  * https://github.com/rviscomi/trunk8
  * 
@@ -247,7 +247,10 @@
 				
 				/* Update text. */
 				if (new_string) {
-					$this.data('trunk8').original_text = new_string;
+					var data = $this.data('trunk8');
+					if (data) {
+						data.original_text = new_string;
+					}
 				}
 
 				/* Truncate accordingly. */
@@ -258,7 +261,11 @@
 		revert: function () {
 			return this.each(function () {
 				/* Get original text. */
-				var text = $(this).data('trunk8').original_text;
+				var data = $(this).data('trunk8');
+				var text = '';
+				if (data) {
+					text = data.original_text;
+				}
 				
 				/* Revert element to original text. */
 				$(this).html(text);
